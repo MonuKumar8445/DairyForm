@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Models.EntityModels.DairyMan>
+
+
+
+<marquee behavior="scroll" direction="left" scrollamount="10"><h1>My Index Page-</h1></marquee>
+
+<div class="data">
+    
+ <a class="btn btn-info"  asp-area="" asp-controller="dairyman" asp-action="logout">logout</a>
+ </div>
+
+ <center><h2 class="bg-info text-white">All Users</h2></center>
+
+<div class="tb">
+ 
+<table class="table">
+    <tr>
+
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Update</th>
+        <th>Delete</th>
+        
+    </tr>
+    @foreach (var dairyMan in Model)
+    {
+        <tr>
+            <td>@dairyMan.FirstName @dairyMan.LastName</td>
+            <td>@dairyMan.Email</td>
+            <td>@dairyMan.Age</td>
+            <td>@dairyMan.Address</td>
+           <td>
+                <a class="btn btn-sm btn-warning" asp-action="Update" asp-controller="DairyMan" asp-route-Id="@dairyMan.Id">
+                    Update
+                </a>
+            </td>
+            <td>
+                <form asp-action="Delete" asp-route-Id="@dairyMan.Id" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+</div>
+
+
+
+<style>
+    h1{
+        border:groove 2px red;
+       border-left:100px;
+        color:red;
+    }
+    .tb{
+        background-image: url("/image/th.jpg");
+        color:white;
+        cursor:pointer;
+        border-radius:10px;
+    }
+
+    .th,td:hover{
+        color:red;
+        font-weight:bold;
+
+    }
+
+    .data{
+
+          position:relative;
+       left:1050px;
+       top:-50px;
+    }
+
+    body{
+         background-image: url("/image/i.jpg");
+
+    }
+    
+</style>
+
+
+
+
+
